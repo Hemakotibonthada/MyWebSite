@@ -25,10 +25,11 @@
         <!-- Global Styles -->
         <link rel="stylesheet" href="styles.css" />
 
-        <!-- Font Awesome -->
-        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <!-- FontAwesome (Local Import) -->
+        <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css" />
     </head>
     <body>
+        <div id="root"></div>
         <!-- Navbar -->
         <header>
             <nav class="navbar">
@@ -102,21 +103,6 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
-        <section id="testimonials">
-            <h2>What Our Users Say</h2>
-            <div class="testimonial-container">
-                <div class="testimonial-card">
-                    <p>"This platform helped me control my IoT devices and upskill in IoT development!"</p>
-                    <h4>- Jane Doe</h4>
-                </div>
-                <div class="testimonial-card">
-                    <p>"The learning portal has excellent courses for beginners and advanced learners alike."</p>
-                    <h4>- John Smith</h4>
-                </div>
-            </div>
-        </section>
-
         <!-- Call to Action Section -->
         <section id="cta">
             <h2>Join MyWebSite Today!</h2>
@@ -140,17 +126,23 @@
         <!-- Scripts -->
         <script>
             // Responsive Navbar Toggle
-            const menuToggle = document.getElementById("menu-toggle");
-            const navLinks = document.querySelector(".nav-links");
+            document.addEventListener("DOMContentLoaded", () => {
+                const menuToggle = document.getElementById("menu-toggle");
+                const navLinks = document.querySelector(".nav-links");
 
-            menuToggle.addEventListener("click", () => {
-                navLinks.classList.toggle("active");
-            });
+                if (menuToggle && navLinks) {
+                    menuToggle.addEventListener("click", () => {
+                        navLinks.classList.toggle("active");
+                    });
+                }
 
-            // Hero Section Scroll Animation
-            window.addEventListener("scroll", () => {
-                const hero = document.querySelector("#hero");
-                hero.style.opacity = 1 - window.pageYOffset / 800;
+                // Hero Section Scroll Animation
+                window.addEventListener("scroll", () => {
+                    const hero = document.querySelector("#hero");
+                    if (hero) {
+                        hero.style.opacity = 1 - window.pageYOffset / 800;
+                    }
+                });
             });
         </script>
     </body>
