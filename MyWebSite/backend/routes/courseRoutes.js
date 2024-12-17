@@ -1,5 +1,3 @@
-// backend/routes/courseRoutes.js
-
 const express = require("express");
 const router = express.Router();
 const {
@@ -68,7 +66,7 @@ router.get("/:courseId/modules", fetchCourseModules);
 // @route   POST /api/courses/:courseId/modules
 // @desc    Add a new module to a course
 // @access  Private
-router.post("/:courseId/modules", authMiddleware, addModule);
+router.post("/:courseId/modules/:moduleId/comments", authMiddleware, addCommentToModule);
 
 // @route   PUT /api/courses/:courseId/modules/:moduleId
 // @desc    Update a module

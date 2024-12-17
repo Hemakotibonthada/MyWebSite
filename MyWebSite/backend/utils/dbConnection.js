@@ -1,5 +1,3 @@
-// backend/config/dbConnection.js
-
 const mongoose = require("mongoose");
 
 // ====================== DATABASE CONNECTION ======================
@@ -11,11 +9,11 @@ const connectDB = async () => {
             useUnifiedTopology: true,
         });
 
-        console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.bold);
+        console.log(`MongoDB Connected: ${conn.connection.host}`);
     } catch (error) {
-        console.error(`Error: ${error.message}`.red.bold);
+        console.error(`Error: ${error.message}`);
         process.exit(1); // Exit process with failure
     }
 };
 
-module.exports = connectDB;
+module.exports = connectDB; // Ensure this is a default export
