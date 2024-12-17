@@ -16,6 +16,8 @@ router.post("/register", registerUser);
 // @desc    Login an existing user
 // @access  Public
 router.post("/login", loginUser);
+router.post('/signup', authController.signup);
+
 
 // @route   POST /api/auth/logout
 // @desc    Logout user and clear token
