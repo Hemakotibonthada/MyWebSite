@@ -1,0 +1,105 @@
+/* frontend/src/assets/styles/LandingPage.css */
+
+.landing-page {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 10%;
+    background: #f5f7fa;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    color: #222;
+}
+
+.hero-content p {
+    margin: 1rem 0 2rem;
+    font-size: 1.2rem;
+}
+
+.hero-image img {
+    max-width: 100%;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.features {
+    padding: 3rem 10%;
+    text-align: center;
+    background: #fff;
+}
+
+.features-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    flex: 1;
+    padding: 1.5rem;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.feature-card img {
+    max-width: 80px;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta {
+    padding: 3rem 10%;
+    background: #007bff;
+    color: #fff;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 2.5rem;
+}
+
+.cta p {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.landing-footer {
+    padding: 1.5rem 10%;
+    background: #222;
+    color: #fff;
+    text-align: center;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #007bff;
+}
