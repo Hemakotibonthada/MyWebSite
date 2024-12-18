@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../assets/styles/SignupPage.css";
+import axios from "axios";
 
 const SignupPage = () => {
     const [formData, setFormData] = useState({
@@ -15,9 +16,11 @@ const SignupPage = () => {
         serialNumber: "",
     });
     const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
+    // Handle form input changes
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         setFormData({
@@ -26,35 +29,43 @@ const SignupPage = () => {
         });
     };
 
+    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
+        setSuccess(null);
 
-        const { password, confirmPassword } = formData;
+        const { firstName, lastName, email, password, confirmPassword, hasDevice, serialNumber } = formData;
+
+        // Validate all required fields
+        if (!firstName || !lastName || !email || !password || !confirmPassword) {
+            setError("All fields are required");
+            return;
+        }
 
         if (password !== confirmPassword) {
             setError("Passwords do not match");
             return;
         }
 
+        if (hasDevice && !serialNumber) {
+            setError("Please provide a serial number for your IoT device");
+            return;
+        }
+
         setLoading(true);
 
         try {
-            const response = await fetch("/api/auth/register", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-            });
+            const response = await axios.post("http://localhost:5001/api/auth/register", formData);
 
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.message || "Signup failed");
+            if (response.status === 201) {
+                setSuccess("Registration successful! Redirecting to login...");
+                setTimeout(() => {
+                    navigate("/login");
+                }, 2000);
             }
-
-            navigate("/login");
         } catch (err) {
-            setError(err.message);
+            setError(err.response?.data?.message || "Signup failed. Please try again.");
         } finally {
             setLoading(false);
         }
@@ -63,8 +74,9 @@ const SignupPage = () => {
     return (
         <div className="signup-page">
             <div className="signup-container">
-                <h2>Sign Up</h2>
+                <h2>Create an Account</h2>
                 {error && <div className="error-message">{error}</div>}
+                {success && <div className="success-message">{success}</div>}
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>First Name</label>
@@ -141,6 +153,7 @@ const SignupPage = () => {
                                 value={formData.serialNumber}
                                 onChange={handleChange}
                                 placeholder="Enter device serial number"
+                                required={formData.hasDevice}
                             />
                         </div>
                     )}

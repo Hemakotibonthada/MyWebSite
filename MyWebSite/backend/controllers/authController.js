@@ -37,22 +37,48 @@ exports.registerUser = async (req, res) => {
 // User Login
 exports.loginUser = async (req, res) => {
     const { email, password } = req.body;
+
     try {
+        // Validate input
+        if (!email || !password) {
+            return res.status(400).json({ message: "Email and password are required." });
+        }
+
+        // Check if the user exists
         const user = await User.findOne({ email });
-        if (!user) return res.status(400).json({ message: "Invalid credentials." });
+        if (!user) {
+            return res.status(404).json({ message: "User not found." });
+        }
 
+        // Compare the password
         const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) return res.status(400).json({ message: "Invalid credentials." });
+        if (!isMatch) {
+            return res.status(400).json({ message: "Invalid credentials." });
+        }
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+        // Generate JWT token
+        const token = jwt.sign(
+            { id: user._id, email: user.email },
+            process.env.JWT_SECRET || "defaultsecret",
+            { expiresIn: "1h" }
+        );
 
-        res.status(200).json({ message: "Login successful.", token });
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).json({ message: "Server error." });
+        res.status(200).json({
+            message: "Login successful.",
+            token,
+            user: {
+                id: user._id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                isAdmin: user.isAdmin,
+            },
+        });
+    } catch (error) {
+        console.error("Login error:", error.message);
+        res.status(500).json({ message: "Internal server error." });
     }
 };
-
 // Logout User
 exports.logoutUser = (req, res) => {
     res.status(200).json({ message: "Logout successful." });

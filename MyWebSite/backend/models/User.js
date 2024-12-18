@@ -1,5 +1,3 @@
-// backend/models/User.js
-
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -7,91 +5,45 @@ const jwt = require('jsonwebtoken');
 // User Schema
 const userSchema = new mongoose.Schema(
     {
-        firstName: {
-            type: String,
-            required: [true, "First name is required"],
-            trim: true,
-        },
-        lastName: {
-            type: String,
-            required: [true, "Last name is required"],
-            trim: true,
-        },
+        firstName: { type: String, required: true, trim: true },
+        lastName: { type: String, required: true, trim: true },
         email: {
             type: String,
-            required: [true, "Email is required"],
+            required: true,
             unique: true,
             lowercase: true,
             match: [/\S+@\S+\.\S+/, "Please use a valid email address"],
         },
-        password: {
-            type: String,
-            required: [true, "Password is required"],
-            minlength: [6, "Password must be at least 6 characters long"],
-        },
-        phoneNumber: {
-            type: String,
-            required: false,
-            match: [/^\d{10}$/, "Please provide a valid 10-digit phone number"],
-        },
-        dateOfBirth: {
-            type: Date,
-            required: false,
-        },
-        address: {
-            type: String,
-            required: false,
-        },
-        gender: {
-            type: String,
-            enum: ["Male", "Female", "Other"],
-            required: false,
-        },
-        blockedUsers: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "User",
-            },
-        ],
-        isAdmin: {
-            type: Boolean,
-            default: false,
-        },
+        password: { type: String, required: true, minlength: 6 },
+        phoneNumber: { type: String, match: [/^\d{10}$/, "Invalid phone number"] },
+        dateOfBirth: { type: Date },
+        address: { type: String },
+        gender: { type: String, enum: ["Male", "Female", "Other"] },
+        isAdmin: { type: Boolean, default: false },
     },
-    { timestamps: true } // Adds createdAt and updatedAt fields
+    { timestamps: true }
 );
 
-// Hash password before saving the user
+// Password hashing
+// backend/models/User.js
 userSchema.pre("save", async function (next) {
     if (!this.isModified("password")) return next();
-
-    try {
-        const salt = await bcrypt.genSalt(10);
-        this.password = await bcrypt.hash(this.password, salt);
-        next();
-    } catch (error) {
-        next(error);
-    }
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
 });
-
-// Compare entered password with the hashed password
+// Compare password
 userSchema.methods.comparePassword = async function (enteredPassword) {
-    return await bcrypt.compare(enteredPassword, this.password);
+    return bcrypt.compare(enteredPassword, this.password);
 };
 
-// Generate JWT token for authentication
+// Generate JWT
 userSchema.methods.generateAuthToken = function () {
     return jwt.sign(
         { id: this._id, email: this.email, isAdmin: this.isAdmin },
         process.env.JWT_SECRET,
-        { expiresIn: process.env.JWT_EXPIRES_IN || "1h" }
+        { expiresIn: '1h' }
     );
 };
 
-// Virtual Full Name Field
-userSchema.virtual("fullName").get(function () {
-    return `${this.firstName} ${this.lastName}`;
-});
-
-// User Model
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', userSchema);

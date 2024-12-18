@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 import "../assets/styles/LoginPage.css";
 
 const LoginPage = () => {
@@ -11,30 +10,28 @@ const LoginPage = () => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    const { login } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
         setLoading(true);
-
+    
         try {
-            // Simulate API Login Request
-            const response = await fetch("/api/auth/login", {
+            const response = await fetch("http://localhost:5001/api/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),
             });
-
+    
             const data = await response.json();
-
+    
             if (!response.ok) {
-                throw new Error(data.message || "Invalid credentials");
+                throw new Error(data.message || "Login failed");
             }
-
-            // Login and Redirect
-            login(data.user);
+    
+            console.log("Login successful:", data);
+            localStorage.setItem("token", data.token);
             navigate("/home");
         } catch (err) {
             setError(err.message);
@@ -42,6 +39,7 @@ const LoginPage = () => {
             setLoading(false);
         }
     };
+
 
     return (
         <div className="login-page">
