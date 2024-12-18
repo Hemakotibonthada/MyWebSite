@@ -26,21 +26,21 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
     return (
-        <Router>  
+        <Router>  {/* This should wrap your entire application */}
             <AuthProvider>
                 <div className="App">
-                    
+                    {/* Navbar */}
                     <Navbar />
 
-                    
+                    {/* Routes */}
                     <Routes>
-                        
+                        {/* Public Routes */}
                         <Route path="/" element={<LandingPage />} />
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/signup" element={<SignupPage />} />
                         <Route path="/not-found" element={<NotFoundPage />} />
 
-                        
+                        {/* Protected Routes */}
                         <Route path="/home" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
                         <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
                         <Route path="/courses" element={<ProtectedRoute><CoursesPage /></ProtectedRoute>} />
