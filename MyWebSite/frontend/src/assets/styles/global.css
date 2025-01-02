@@ -11,3 +11,47 @@ body {
     background-color: #f8f9fa;
     color: #343a40;
 }
+#cta {
+    background-color: #5f00d4; /* Maintain consistent vibrant background */
+    color: #ffffff;
+    text-align: center;
+    padding: 50px 0;
+}
+
+#cta .btn-primary {
+    background-color: #ff5773; /* Button color */
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#cta .btn-primary:hover {
+    background-color: #e64a65;
+}
+footer {
+    background-color: #2c2c2c; /* Consistent dark background */
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    margin: 0; /* Remove extra margins */
+}
+
+.footer-links a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-container p {
+    margin-top: 10px;
+    font-size: 14px;
+}

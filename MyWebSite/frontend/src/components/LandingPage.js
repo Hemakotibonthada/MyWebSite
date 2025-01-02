@@ -18,47 +18,78 @@ const LandingPage = () => {
                         Get Started
                     </Link>
                 </div>
-                <div className="hero-image">
-                    <img
-                        src="/assets/images/landing-hero.png"
-                        alt="Hero Section"
-                    />
-                </div>
+                    {/* <div className="hero-image">
+                        <img
+                            src="./assets/images/hero.png"
+                            alt="Hero Section"
+                        />
+                    </div>  */}
             </section>
+
+            {/* <section id="features">
+        <h2>Explore Our Features</h2>
+        <div class="features-container">
+            <div class="feature-card">
+                <i class="fas fa-microchip"></i>
+                <h3>IoT Device Control</h3>
+                <p>Manage and monitor your IoT devices from anywhere in the world.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-book-reader"></i>
+                <h3>Learning Portal</h3>
+                <p>Access top-notch courses and enhance your professional skills.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-comments"></i>
+                <h3>Interactive Chat Rooms</h3>
+                <p>Communicate and collaborate with peers in real-time.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-briefcase"></i>
+                <h3>Job Portal</h3>
+                <p>Find career opportunities or post job openings with ease.</p>
+            </div>
+        </div>
+    </section> */}
+
 
             {/* Features Section */}
             <section className="features">
                 <h2>Explore Our Features</h2>
                 <div className="features-container">
                     <div className="feature-card">
-                        <img
+                    <i class="fas fa-microchip"></i>
+                        {/* <img
                             src="/assets/images/iot-control.png"
                             alt="IoT Control"
-                        />
+                        /> */}
                         <h3>IoT Device Control</h3>
                         <p>Manage and monitor your IoT devices seamlessly.</p>
                     </div>
                     <div className="feature-card">
-                        <img
+                    <i class="fas fa-book-reader"></i>
+                        {/* <img
                             src="/assets/images/learning-portal.png"
                             alt="Learning Portal"
-                        />
+                        /> */}
                         <h3>Learning Portal</h3>
                         <p>Access interactive courses and upskill effectively.</p>
                     </div>
                     <div className="feature-card">
-                        <img
+                    <i class="fas fa-comments"></i>
+                        {/* <img
                             src="/assets/images/chat-room.png"
                             alt="Chat Room"
-                        />
+                        /> */}
                         <h3>Real-Time Chat Rooms</h3>
                         <p>Connect with peers and collaborate in real time.</p>
                     </div>
                     <div className="feature-card">
-                        <img
+                    <i class="fas fa-briefcase"></i>
+                        {/* <img
                             src="/assets/images/job-portal.png"
                             alt="Job Portal"
-                        />
+                        /> */}
                         <h3>Job Opportunities</h3>
                         <p>Find, apply for jobs, or post job openings easily.</p>
                     </div>
@@ -76,8 +107,8 @@ const LandingPage = () => {
                     Sign Up
                 </Link>
             </section>
-
-            {/* Footer */}
+{/* 
+           
             <footer className="landing-footer">
                 <div className="footer-links">
                     <Link to="/about">About Us</Link>
@@ -85,7 +116,7 @@ const LandingPage = () => {
                     <Link to="/careers">Careers</Link>
                 </div>
                 <p>&copy; {new Date().getFullYear()} MyWebSite. All rights reserved.</p>
-            </footer>
+            </footer> */}
         </div>
     );
 };

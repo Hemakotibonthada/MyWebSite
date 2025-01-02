@@ -41,7 +41,7 @@ function App() {
                         <Route path="/not-found" element={<NotFoundPage />} />
 
                         {/* Protected Routes */}
-                        <Route path="/home" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+                        <Route path="./home" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
                         <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
                         <Route path="/courses" element={<ProtectedRoute><CoursesPage /></ProtectedRoute>} />
                         <Route path="/chat" element={<ProtectedRoute><ChatRoomPage /></ProtectedRoute>} />

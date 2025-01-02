@@ -31,15 +31,15 @@ const LoginPage = () => {
             }
     
             console.log("Login successful:", data);
-            localStorage.setItem("token", data.token);
-            navigate("/home");
+            localStorage.setItem("token", data.token); // Save token for authentication
+            localStorage.setItem("user", JSON.stringify(data.user)); // Save user details
+            navigate("/home"); // Redirect to Home Page after successful login
         } catch (err) {
             setError(err.message);
         } finally {
             setLoading(false);
         }
     };
-
 
     return (
         <div className="login-page">

@@ -11,12 +11,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4rem 10%;
+    padding: 4rem 20%;
     background: #f5f7fa;
 }
 
 .hero-content h1 {
     font-size: 3rem;
+    align-items: center;
     color: #222;
 }
 
@@ -25,9 +26,9 @@
     font-size: 1.2rem;
 }
 
-.hero-image img {
+/* .hero-image img {
     max-width: 100%;
-}
+} */
 
 .btn-primary {
     display: inline-block;
@@ -102,4 +103,58 @@
 
 .footer-links a:hover {
     color: #007bff;
+}
+/* Features Section */
+#features {
+    background-color: white;
+    padding: 50px 20px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+#features:hover {
+    background-color: #f7f7f7;
+}
+
+#features h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.features-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    background-color: #f0f0f0;
+    padding: 30px;
+    border-radius: 10px;
+    width: 23%;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card i {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #6200ea;
+    transition: color 0.3s ease;
+}
+
+.feature-card i:hover {
+    color: #ff4081;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
 }
