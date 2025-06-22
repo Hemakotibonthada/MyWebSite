@@ -1,0 +1,93 @@
+# Node.js modules
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Environment Variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Database files
+database/db.sqlite
+database/*.sqlite3
+database/*.db
+
+# macOS System Files
+.DS_Store
+
+# Editor/IDE specific files
+.vscode/
+.idea/
+*.iml
+
+# Build Files
+frontend/build/
+frontend/dist/
+
+# React Files
+frontend/.eslintcache
+frontend/node_modules/
+
+# Coverage Files
+coverage/
+*.lcov
+
+# Cache Files
+.cache
+tmp/
+temp/
+
+# Debugging
+debug/
+out.log
+*.pid
+*.seed
+*.pid.lock
+
+# Test Coverage Reports
+*.tgz
+*.bak
+*.swp
+
+# Heroku Files
+.heroku/
+
+# Generated Files
+npm-debug.log*
+package-lock.json
+yarn.lock
+
+# Lint Cache
+.eslintcache
+
+# Local Uploads
+uploads/
+
+# Misc
+*.log
+*.bak
+*.swp
+Thumbs.db
+
+# Ignore any secrets folder if exists
+secrets/
+
+# Ignore build artifacts
+build/
+dist/
+
+# Ignore migrations
+database/migrations/*.log
+database/seeds/*.log

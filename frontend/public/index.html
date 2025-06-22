@@ -1,0 +1,157 @@
+<!-- frontend/public/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="MyWebSite: An advanced platform for IoT device control, online courses, real-time communication, and career management."
+        />
+        <meta name="keywords" content="IoT, Learning, Chatroom, Job Portal, Smart Platform" />
+        <meta name="author" content="Hema Koteswar Naidu" />
+        <title>MyWebSite - Empower Your Skills</title>
+
+        <!-- Favicon -->
+        <link rel="icon" href="/assets/favicon.ico" />
+
+        <!-- Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Global Styles -->
+        <link rel="stylesheet" href="styles.css" />
+
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <header>
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="/">MyWebSite</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/login.html">Login</a></li>
+                    <li><a href="/signup.html">Sign Up</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact Us</a></li>
+                </ul>
+                <div class="hamburger-menu" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Welcome to MyWebSite</h1>
+                <p>
+                    Empower yourself with IoT device control, online learning, real-time collaboration,
+                    and job management tools.
+                </p>
+                <a href="/signup.html" class="btn-primary">Get Started</a>
+            </div>
+            <div class="hero-image">
+                <img src="/assets/hero-image.png" alt="Hero Image" />
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features">
+            <h2>Explore Our Features</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>IoT Device Control</h3>
+                    <p>Manage and monitor your IoT devices from anywhere in the world.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-book-reader"></i>
+                    <h3>Learning Portal</h3>
+                    <p>Access top-notch courses and enhance your professional skills.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Interactive Chat Rooms</h3>
+                    <p>Communicate and collaborate with peers in real-time.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Job Portal</h3>
+                    <p>Find career opportunities or post job openings with ease.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="about-content">
+                <h2>About Us</h2>
+                <p>
+                    MyWebSite is a unified platform designed to empower individuals and organizations
+                    by seamlessly combining IoT device management, skill-building courses, real-time
+                    communication, and career management solutions. Our tools deliver simplicity and
+                    innovation to drive success.
+                </p>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials">
+            <h2>What Our Users Say</h2>
+            <div class="testimonial-container">
+                <div class="testimonial-card">
+                    <p>"This platform helped me control my IoT devices and upskill in IoT development!"</p>
+                    <h4>- Jane Doe</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The learning portal has excellent courses for beginners and advanced learners alike."</p>
+                    <h4>- John Smith</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section id="cta">
+            <h2>Join MyWebSite Today!</h2>
+            <p>Sign up now and take the next step in advancing your skills and managing your devices.</p>
+            <a href="/signup.html" class="btn-primary">Sign Up</a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-links">
+                    <a href="/about.html">About</a>
+                    <a href="/careers.html">Careers</a>
+                    <a href="/privacy-policy.html">Privacy Policy</a>
+                    <a href="/contact.html">Contact Us</a>
+                </div>
+                <p>&copy; 2024 MyWebSite. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script>
+            // Responsive Navbar Toggle
+            const menuToggle = document.getElementById("menu-toggle");
+            const navLinks = document.querySelector(".nav-links");
+
+            menuToggle.addEventListener("click", () => {
+                navLinks.classList.toggle("active");
+            });
+
+            // Hero Section Scroll Animation
+            window.addEventListener("scroll", () => {
+                const hero = document.querySelector("#hero");
+                hero.style.opacity = 1 - window.pageYOffset / 800;
+            });
+        </script>
+    </body>
+</html>

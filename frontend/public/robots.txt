@@ -1,0 +1,21 @@
+# robots.txt for MyWebSite
+
+# Allow all user agents
+User-agent: *
+Disallow:
+
+# Disallow access to sensitive directories
+Disallow: /api/
+Disallow: /admin/
+Disallow: /config/
+Disallow: /utils/
+Disallow: /server.js
+
+# Allow specific pages
+Allow: /index.html
+Allow: /about.html
+Allow: /contact.html
+Allow: /careers.html
+
+# Sitemap
+Sitemap: https://your-domain.com/sitemap.xml
